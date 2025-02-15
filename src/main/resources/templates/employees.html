@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h2>Employee List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        <tr th:each="emp : ${employees}">
+            <td th:text="${emp.id}"></td>
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.department}"></td>
+        </tr>
+    </table>
+
+    <h3>Add Employee</h3>
+    <form action="/employees" method="post">
+        <input type="text" name="name" placeholder="Employee Name" required>
+        <input type="text" name="department" placeholder="Department" required>
+        <button type="submit">Add Employee</button>
+    </form>
+</body>
+</html>

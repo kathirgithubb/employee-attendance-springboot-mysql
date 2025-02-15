@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h2>Mark Attendance</h2>
+    <form action="/attendance" method="post">
+        <select name="employee.id">
+            <option th:each="emp : ${employees}" th:value="${emp.id}" th:text="${emp.name}"></option>
+        </select>
+        <input type="date" name="date" required>
+        <select name="status">
+            <option>Present</option>
+            <option>Absent</option>
+            <option>Leave</option>
+        </select>
+        <button type="submit">Mark Attendance</button>
+    </form>
+
+    <h3>Attendance Records</h3>
+    <table>
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        <tr th:each="att : ${attendanceList}">
+            <td th:text="${att.employee.name}"></td>
+            <td th:text="${att.date}"></td>
+            <td th:text="${att.status}"></td>
+        </tr>
+    </table>
+</body>
+</html>
